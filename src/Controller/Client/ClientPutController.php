@@ -1,7 +1,7 @@
 <?php
 
-use Src\Controller\Client\ClientUpdaterService;
-use Src\Controller\ControllerUtils;
+use Src\Service\Client\ClientUpdaterService;
+use Src\Utils\ControllerUtils;
 
 final readonly class ClientPutController
 {

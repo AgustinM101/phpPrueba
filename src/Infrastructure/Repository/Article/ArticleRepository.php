@@ -14,7 +14,8 @@ final readonly class ArticleRepository extends PDOManager implements ArticleRepo
                         FROM
                             articles A
                         WHERE
-                            A.id = :id
+                            A.id = :id 
+                        AND A.deleted = 0
                     HEREDOC;
 
         $parameters = [
@@ -33,7 +34,9 @@ final readonly class ArticleRepository extends PDOManager implements ArticleRepo
                         SELECT
                             *
                         FROM
-                            articles A
+                            articles A 
+                        WHERE
+                            A.deleted = 0
                     HEREDOC;
         
         $results = $this->execute($query);
@@ -61,6 +64,25 @@ final readonly class ArticleRepository extends PDOManager implements ArticleRepo
             "deleted" => $article->deleted()
            
             
+        ];
+
+        $this->execute($query, $parameters);
+    }
+
+    public function update(Article $article): void
+    {
+        $query = <<<UPDATE_QUERY
+                        UPDATE articles
+                        SET price = :price, description = :description, stock = :stock, deleted = :deleted
+                        WHERE id = :id
+                    UPDATE_QUERY;
+
+        $parameters = [
+            "id" => $article->id(),
+            "price" => $article->price(),
+            "description" => $article->description(),
+            "stock" => $article->stock(),
+            "deleted" => $article->deleted()
         ];
 
         $this->execute($query, $parameters);

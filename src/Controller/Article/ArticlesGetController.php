@@ -23,9 +23,9 @@ final readonly class ArticlesGetController {
         foreach($articles as $article) {
             $responses[] = [
                 "id" => $article->id(),
-                "title" => $article->title(),
+                "price" => $article->price(),
                 "description" => $article->description(),
-                "imageUrl" => $article->imageUrl(),
+                "stock" => $article->stock(),
             ];
         }
 

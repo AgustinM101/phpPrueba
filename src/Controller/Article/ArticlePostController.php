@@ -12,11 +12,11 @@ final readonly class ArticlePostController
     }
 
     public function start(): void {
-        $title = ControllerUtils::getPost("title");
+        $price = ControllerUtils::getPost("price");
         $description = ControllerUtils::getPost("description");
-        $imageUrl = ControllerUtils::getPost("imageUrl");
+        $stock = ControllerUtils::getPost("stock");
 
-        $article = $this->service->create($title, $description, $imageUrl);
+        $article = $this->service->create($price, $description, $stock);
         
     }
 

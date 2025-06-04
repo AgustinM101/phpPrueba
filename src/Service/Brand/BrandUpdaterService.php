@@ -12,12 +12,12 @@ final readonly class BrandUpdaterService{
     private BrandFinderService $finderService;
 
     public function __construct() {
-        $this->repository = $Brandrepository();
-        $this->finder = new BrandFinderService();
+        $this->repository = new Brandrepository();
+        $this->finderService = new BrandFinderService();
     }
     public function update(string $name, string $code, int $id): void{
 
-        $brand = $this->finder->find($id);
+        $brand = $this->finderService->find($id);
         $brand->modify($name, $code);
 
         $this->repository->update($brand);

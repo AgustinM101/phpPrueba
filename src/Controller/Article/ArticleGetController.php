@@ -16,9 +16,9 @@ final readonly class ArticleGetController {
         
         echo json_encode([
             "id" => $article->id(),
-            "title" => $article->title(),
+            "price" => $article->price(),
             "description" => $article->description(),
-            "imageUrl" => $article->imageUrl()
+            "stock" => $article->stock()
         ]);
     }
 }

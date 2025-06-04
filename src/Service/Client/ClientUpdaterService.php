@@ -12,12 +12,12 @@ final readonly class ClientUpdaterService{
     private ClientFinderService $finderService;
 
     public function __construct() {
-        $this->repository = $Clientrepository();
-        $this->finder = new ClientFinderService();
+        $this->repository = new Clientrepository();
+        $this->finderService = new ClientFinderService();
     }
     public function update(int $dni, string $name,string $surname, int $id): void{
 
-        $client = $this->finder->find($id);
+        $client = $this->finderService->find($id);
         $client->modify($dni, $name, $surname);
 
         $this->repository->update($client);

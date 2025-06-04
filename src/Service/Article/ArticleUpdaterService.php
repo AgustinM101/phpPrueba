@@ -12,13 +12,13 @@ final readonly class ArticleUpdaterService{
     private ArticleFinderService $finderService;
 
     public function __construct() {
-        $this->repository = $Articlerepository();
-        $this->finder = new ArticleFinderService();
+        $this->repository = new ArticleRepository();
+        $this->finderService = new ArticleFinderService();
     }
-    public function update(string $title, string $description,string $imageUrl, int $id): void{
+    public function update(int $price, string $description, int $stock, int $id): void{
 
-        $article = $this->finder->find($id);
-        $article->modify($title, $description, $imageUrl);
+        $article = $this->finderService->find($id);
+        $article->modify($price, $description, $stock);
 
         $this->repository->update($article);
     }

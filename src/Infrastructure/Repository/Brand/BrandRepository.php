@@ -61,10 +61,27 @@ final readonly class BrandRepository extends PDOManager implements BrandReposito
            
             
         ];
+    
 
         $this->execute($query, $parameters);
     }
+    public function update(Brand $brand): void
+    {
+        $query = <<< UPDATE_QUERY
+                        UPDATE brand
+                        SET name = :name, code = :code, deleted = :deleted
+                        WHERE id = :id
+                        UPDATE_QUERY;
 
+        $parameters = [
+            "id" => $brand->id(),
+            "name" => $brand->name(),
+            "code" => $brand->code(),
+            "deleted" => $brand->deleted(),
+        ];
+
+        $this->execute($query, $parameters);
+    }
     private function toBrand(?array $primitive): ?Brand {
         if ($primitive === null) {
             return null;

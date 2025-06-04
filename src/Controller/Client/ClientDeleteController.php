@@ -1,11 +1,11 @@
 <?php
 
-use Src\Controller\Client\ClientDeleterService;
+use Src\Service\Client\ClientDeleterService;
 
 final readonly class ClientDeleteController
 {
     private ClientDeleterService $service;
-    private ClientFinderService $finder;
+    
 
     public function __construct() {
         $this->service = new ClientDeleterService;
@@ -13,9 +13,9 @@ final readonly class ClientDeleteController
 
     public function start(int $id): void {
 
-        $client = $this->service->finder($id);
+        
 
-        $client = $this->service->deleter($dni, $name, $surname, $id);
+        $this->service->delete( $id);
     }
 
 

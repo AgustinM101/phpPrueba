@@ -2,12 +2,12 @@
 
 namespace Src\Entity\Article;
 
-final readonly class Article {
+final class Article {
     public function __construct(
-        private ?int $id,
-        private string $title,
+        private readonly ?int $id,
+        private int $price,
         private string $description,
-        private string $imageUrl,
+        private int $stock,
         private int $deleted = 0
 
     ) {
@@ -21,10 +21,15 @@ final readonly class Article {
     {
         return $this->deleted ? 1 : 0;
     }
+    public function modify( int $price, string $description, int $stock): void {
+        $this->price = $price;
+        $this->description = $description;
+        $this->stock = $stock;
+    }
     
-    public static function create(string $title, string $description, string $imageUrl ): self
+    public static function create(int $price, string $description, int $stock ): self
     {
-        return new self(null, $title, $description, $imageUrl, false);
+        return new self(null, $price, $description, $stock, false);
     }
 
     public function id(): ?int
@@ -37,12 +42,12 @@ final readonly class Article {
         return $this->description;
     }
 
-    public function title(): string
+    public function price(): int
     {
-        return $this->title;
+        return $this->price;
     }
-    public function imageUrl(): string
+    public function stock(): int
     {
-        return $this->imageUrl;
+        return $this->stock;
     }
 }

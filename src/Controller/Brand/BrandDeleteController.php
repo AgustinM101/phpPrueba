@@ -15,7 +15,7 @@ final readonly class BrandDeleteController
 
         $brand = $this->service->finder($id);
 
-        $brand = $this->service->deleter($price, $stock, $description, $id);
+        $brand = $this->service->deleter($name, $code, $id);
     }
 
 

@@ -12,16 +12,14 @@ final readonly class ClientDeleterService{
     private ClientFinderService $finderService;
 
     public function __construct() {
-        $this->repository = $ClientRepository();
-        $this->finder = new ClientDeleterService();
+        $this->repository = new ClientRepository();
+        $this->finderService = new ClientFinderService();
     }
     
     public function delete(int $id): void{
 
-        $client = $this->deleter->delete($id);
-        $client->delete();
-
-        $this->repository->update($client);
+        $client = $this->finderService->find($id);
+        $this->repository->delete($client);
     }
     
 }

@@ -1,7 +1,7 @@
 <?php
 
-use Src\Controller\Brand\BrandUpdaterService;
-use Src\Controller\ControllerUtils;
+use Src\Service\Brand\BrandUpdaterService;
+use Src\Utils\ControllerUtils;
 
 final readonly class BrandPutController
 {

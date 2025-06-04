@@ -2,30 +2,26 @@
 
 namespace Src\Entity\Client;
 
-final readonly class Client {
+final class Client {
     public function __construct(
-        private ?int $id,
+        private readonly ?int $id,
         private int $dni,
         private string $name,
         private string $surname,
-        private int $deleted = 0
+        
 
     ) {
     }
-        public function delete(): void
-    {
-        $this->deleted = 1;
-    }
-
-    public function deleted(): int
-    {
-        return $this->deleted ? 1 : 0;
-    }
-    
     public static function create(int $dni, string $name, string $surname ): self
     {
-        return new self(null, $dni, $name, $surname, false);
+        return new self(null, $dni, $name, $surname);
     }
+    public function modify(int $dni, string $name, string $surname): void {
+        $this->dni = $dni;
+        $this->name = $name;
+        $this->surname = $surname;
+    }
+
 
     public function id(): ?int
     {

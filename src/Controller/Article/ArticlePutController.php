@@ -1,7 +1,7 @@
 <?php
 
-use Src\Controller\Article\ArticleUpdaterService;
-use Src\Controller\ControllerUtils;
+use Src\Service\Article\ArticleUpdaterService;
+use Src\Utils\ControllerUtils;
 
 final readonly class ArticlePutController
 {
@@ -12,12 +12,12 @@ final readonly class ArticlePutController
     }
 
     public function start(int $id): void {
-        $title = ControllerUtils::getPost("title");
+        $price = ControllerUtils::getPost("price");
         $description = ControllerUtils::getPost("description");
-        $imageUrl = ControllerUtils::getPost("imageUrl");
+        $stock = ControllerUtils::getPost("stock");
 
 
-        $article = $this->service->update($title, $description, $imageUrl, $id);
+        $article = $this->service->update($price, $description, $stock, $id);
     }
 
 

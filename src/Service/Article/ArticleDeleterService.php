@@ -12,13 +12,14 @@ final readonly class ArticleDeleterService{
     private ArticleFinderService $finderService;
 
     public function __construct() {
-        $this->repository = $Articlerepository();
-        $this->finder = new ArticleDeleterService();
+        $this->repository = new ArticleRepository();
+        $this->finderService = new ArticleFinderService();
     }
     
     public function delete(int $id): void{
 
-        $article = $this->deleter->delete($id);
+
+        $article = $this->finderService->find($id);
         $article->delete();
 
         $this->repository->update($article);

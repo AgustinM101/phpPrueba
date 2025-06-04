@@ -65,7 +65,37 @@ final readonly class ClientRepository extends PDOManager implements ClientReposi
 
         $this->execute($query, $parameters);
     }
+    public function delete(Client $client): void
+    {
+        $query = <<< DELETE_QUERY
+                        DELETE FROM clients
+                        WHERE id = :id
+                        DELETE_QUERY;
 
+        $parameters = [
+            "id" => $client->id(),
+        ];
+
+        $this->execute($query, $parameters);
+    }
+
+    public function update(Client $client): void
+    {
+        $query = <<< UPDATE_QUERY
+                        UPDATE clients
+                        SET dni = :dni, name = :name, surname = :surname
+                        WHERE id = :id
+                        UPDATE_QUERY;
+
+        $parameters = [
+            "id" => $client->id(),
+            "dni" => $client->dni(),
+            "name" => $client->name(),
+            "surname" => $client->surname(),
+        ];
+
+        $this->execute($query, $parameters);
+    }   
     private function toClient(?array $primitive): ?Client {
         if ($primitive === null) {
             return null;
