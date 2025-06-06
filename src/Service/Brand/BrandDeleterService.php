@@ -12,13 +12,13 @@ final readonly class BrandDeleterService{
     private BrandFinderService $finderService;
 
     public function __construct() {
-        $this->repository = $BrandRepository();
-        $this->finder = new BrandDeleterService();
+        $this->repository = new BrandRepository();
+        $this->finderService = new BrandFinderService();
     }
     
     public function delete(int $id): void{
 
-        $brand = $this->deleter->delete($id);
+        $brand = $this->finderService->find($id);
         $brand->delete();
 
         $this->repository->update($brand);

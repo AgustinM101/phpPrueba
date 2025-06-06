@@ -1,11 +1,11 @@
 <?php
 
-use Src\Controller\Brand\BrandDeleterService;
+use Src\Service\Brand\BrandDeleterService;
 
 final readonly class BrandDeleteController
 {
     private BrandDeleterService $service;
-    private BrandFinderService $finder;
+   
 
     public function __construct() {
         $this->service = new BrandDeleterService;
@@ -13,9 +13,9 @@ final readonly class BrandDeleteController
 
     public function start(int $id): void {
 
-        $brand = $this->service->finder($id);
+        
 
-        $brand = $this->service->deleter($name, $code, $id);
+        $this->service->delete($id);
     }
 
 
