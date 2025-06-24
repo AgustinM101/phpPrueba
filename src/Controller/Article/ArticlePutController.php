@@ -15,9 +15,10 @@ final readonly class ArticlePutController
         $price = ControllerUtils::getPost("price");
         $description = ControllerUtils::getPost("description");
         $stock = ControllerUtils::getPost("stock");
+        $imageUrl = ControllerUtils::getPost("imageUrl");
 
 
-        $article = $this->service->update($price, $description, $stock, $id);
+        $article = $this->service->update($price, $description, $stock, $imageUrl, $id);
     }
 
 

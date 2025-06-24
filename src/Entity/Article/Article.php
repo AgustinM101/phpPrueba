@@ -8,6 +8,7 @@ final class Article {
         private int $price,
         private string $description,
         private int $stock,
+        private string $imageUrl,
         private int $deleted = 0
 
     ) {
@@ -21,15 +22,16 @@ final class Article {
     {
         return $this->deleted ? 1 : 0;
     }
-    public function modify( int $price, string $description, int $stock): void {
+    public function modify( int $price, string $description, int $stock, string $imageUrl): void {
         $this->price = $price;
         $this->description = $description;
         $this->stock = $stock;
+        $this->imageUrl = $imageUrl;
     }
     
-    public static function create(int $price, string $description, int $stock ): self
+    public static function create(int $price, string $description, int $stock, string $imageUrl ): self
     {
-        return new self(null, $price, $description, $stock, false);
+        return new self(null, $price, $description, $stock,$imageUrl, false);
     }
 
     public function id(): ?int
@@ -50,4 +52,9 @@ final class Article {
     {
         return $this->stock;
     }
+    public function imageUrl(): string
+    {
+        return $this->imageUrl;
+    }
+
 }
