@@ -18,7 +18,7 @@ final readonly class ArticleGetController {
             "id" => $article->id(),
             "price" => $article->price(),
             "description" => $article->description(),
-            "stock" => $article->stock()
+            "stock" => $article->stock(),
             "imageUrl" => $article->imageUrl(),
         ]);
     }
