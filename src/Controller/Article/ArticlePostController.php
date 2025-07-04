@@ -15,10 +15,10 @@ final readonly class ArticlePostController
         $price = ControllerUtils::getPost("price");
         $description = ControllerUtils::getPost("description");
         $stock = ControllerUtils::getPost("stock");
-        $name = ControllerUtils::getPost("name");
         $imageUrl = ControllerUtils::getPost("imageUrl");
+        $name = ControllerUtils::getPost("name");
 
-        $article = $this->service->create($price, $description, $stock, $name, $imageUrl);
+        $article = $this->service->create($price, $description, $stock, $imageUrl, $name);
         
     }
 

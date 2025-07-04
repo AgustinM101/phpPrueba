@@ -37,7 +37,7 @@ final class Article {
     
     public static function create(int $price, string $description, int $stock, string $imageUrl, string $name ): self
     {
-        return new self(null, $price, $description, $stock,$imageUrl,$name, false);
+        return new self(null, $price, $description, $stock, $imageUrl, $name, false);
     }
 
     public function id(): ?int

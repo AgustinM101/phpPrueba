@@ -54,15 +54,15 @@ final readonly class ArticleRepository extends PDOManager implements ArticleRepo
 
         $query = <<< INSERT_QUERY
                         INSERT INTO articles (price, description, stock, imageUrl, name, deleted)
-                        VALUES (:price, :description,:stock,:imageUrl,:name, :deleted)
+                        VALUES (:price, :description, :stock, :imageUrl, :name, :deleted)
                         INSERT_QUERY;
         
         $parameters = [
             "price" => $article->price(),
             "description" => $article->description(),
             "stock" => $article->stock(),
-            "name" => $article->name(),
             "imageUrl" => $article->imageUrl(),
+            "name" => $article->name(),
             "deleted" => $article->deleted()
             
            
@@ -103,8 +103,8 @@ final readonly class ArticleRepository extends PDOManager implements ArticleRepo
             $primitive["price"],
             $primitive["description"],
             $primitive["stock"],
-            $primitive["name"],
             $primitive["imageUrl"],
+            $primitive["name"]
         );
     }
 }
