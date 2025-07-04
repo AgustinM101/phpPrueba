@@ -12,7 +12,7 @@ final readonly class CategoryPutController
     }
 
     public function start(int $id): void {
-        $name = ControllerUtils::getPost("price");
+        $name = ControllerUtils::getPost("name");
         $imageUrl = ControllerUtils::getPost("imageUrl");
 
 

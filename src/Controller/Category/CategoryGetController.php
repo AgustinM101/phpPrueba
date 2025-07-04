@@ -16,7 +16,7 @@ final readonly class CategoryGetController {
         
         echo json_encode([
             "id" => $category->id(),
-            "name" => $category->price(),
+            "name" => $category->name(),
             "imageUrl" => $category->imageUrl(),
         ]);
     }
