@@ -12,8 +12,8 @@ final readonly class ArticleCreatorService{
     public function __construct() {
         $this->repository = new Articlerepository();
     }
-    public function create(int $price, string $description, int $stock, string $imageUrl): void{
-        $article = Article::create($price, $description, $stock, $imageUrl);
+    public function create(int $price, string $description, int $stock, string $imageUrl, string $name): void{
+        $article = Article::create($price, $description, $stock, $imageUrl, $name);
         $this->repository->create($article);
     }
     

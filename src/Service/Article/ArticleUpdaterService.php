@@ -15,10 +15,10 @@ final readonly class ArticleUpdaterService{
         $this->repository = new ArticleRepository();
         $this->finderService = new ArticleFinderService();
     }
-    public function update(int $price, string $description, int $stock, string $imageUrl, int $id): void{
+    public function update(int $price, string $description, int $stock, string $imageUrl, string $name, int $id): void{
 
         $article = $this->finderService->find($id);
-        $article->modify($price, $description, $stock, $imageUrl);
+        $article->modify($price, $description, $stock, $imageUrl, $name);
 
         $this->repository->update($article);
     }
